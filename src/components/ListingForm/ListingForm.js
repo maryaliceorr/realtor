@@ -5,7 +5,7 @@ import './ListingForm.css';
 class ListingForm extends React.Component {
   render () {
     return (
-      <div className="listing-form">
+      <div className="ListingForm">
         <h2>Listing Form</h2>
       </div>
     );
