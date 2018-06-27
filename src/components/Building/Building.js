@@ -5,7 +5,7 @@ import './Building.css';
 class Building extends React.Component {
   render () {
     return (
-      <div className="building">
+      <div className="Building">
         <h2>Building</h2>
       </div>
     );
