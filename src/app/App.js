@@ -12,12 +12,20 @@ import './App.css';
 class App extends Component {
   state = {
     listings: [],
+    selectedListingId: -1,
   }
-  componentDidMount () {
+
+  listingsSelectEvent = (id) => {
+    this.setState({
+      selectedListingId: id,
+    });
+  }
+
+  componentDidMount() {
     connection();
     listingRequests.getRequest()
       .then((listings) => {
-        this.setState({listings});
+        this.setState({ listings });
       })
       .catch((error) => {
         console.error('listingRequest.getRequest failed', error);
@@ -27,7 +35,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="col-sm-6">
-          <Listings listings={this.state.listings}/>
+          <Listings
+            listings={this.state.listings}
+            onListingSelection={this.listingSelectEvent}
+          />
         </div>
         <div className="col-sm-6">
           <Building />
