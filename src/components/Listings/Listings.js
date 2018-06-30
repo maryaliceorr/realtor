@@ -9,17 +9,19 @@ import './Listings.css';
 class Listings extends React.Component {
   static propTypes = {
     listings: PropTypes.arrayOf(listingShape),
+    onListingSelection: PropTypes.func,
   };
 
   render () {
     // const listings = this.props.listings; the next line is saying the same thing as this
-    const {listings} = this.props;
+    const {listings, onListingSelection} = this.props;
     const listingsItemComponents = listings.map((listing, index) => {
       return (
         <ListingItem
           listing={listing}
           index={index}
           key={listing.id}
+          onSelect={onListingSelection}
         />
       );
     });
