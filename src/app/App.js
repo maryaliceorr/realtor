@@ -32,16 +32,23 @@ class App extends Component {
       });
   }
   render () {
+    // const {selectedListingId} = this.state;
+    // const selectedListing = this.state.listings;
+    // those two lines are the same as the two below
+    const {selectedListingId, listings} = this.state;
+    // const selectedListing = listings.find((listing) => {listing.id === selectedListingId });
+    // same as line below
+    const selectedListing = listings.find(listing => listing.id === selectedListingId);
     return (
       <div className="App">
         <div className="col-sm-6">
           <Listings
             listings={this.state.listings}
-            onListingSelection={this.listingSelectEvent}
+            onListingSelection={this.listingsSelectEvent}
           />
         </div>
         <div className="col-sm-6">
-          <Building />
+          <Building listing={selectedListing} />
         </div>
         <div className="col-sm-12">
           <ListingForm />
