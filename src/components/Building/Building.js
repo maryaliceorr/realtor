@@ -1,19 +1,21 @@
 import React from 'react';
-import {listingShape} from '../../propz/listingProp';
+import {listingOptionalShape} from '../../propz/listingProp';
 
 import './Building.css';
 
 import {formatPrice} from '../../helpers';
 class Building extends React.Component {
   static propTypes = {
-    listing: listingShape,
+    listing: listingOptionalShape,
   }
 
   render () {
     const { listing } = this.props;
-    if (!listing) {
+    if (listing.nope) {
       return (
-        <h1>Oh No!</h1>
+        <div className="Building">
+          <h1 className="unknown-listing"><span className="glyphicon glyphicon-arrow-left"></span> Oh No!</h1>
+        </div>
       );
     }
     return (

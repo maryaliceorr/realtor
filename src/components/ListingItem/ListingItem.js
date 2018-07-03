@@ -16,7 +16,6 @@ class ListingItem extends React.Component {
     e.stopPropagation();
 
     const {listing, onSelectListing} = this.props;
-    debugger
     onSelectListing(listing.id);
   }
 
