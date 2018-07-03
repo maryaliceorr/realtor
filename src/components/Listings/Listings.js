@@ -21,7 +21,7 @@ class Listings extends React.Component {
           listing={listing}
           index={index}
           key={listing.id}
-          onSelect={onListingSelection}
+          onSelectListing={onListingSelection}
         />
       );
     });
