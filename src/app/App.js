@@ -21,15 +21,28 @@ class App extends Component {
     });
   }
 
-  componentDidMount() {
-    connection();
-    listingRequests.getRequest()
-      .then((listings) => {
-        this.setState({ listings });
+  formSubmitEvent = (newListing) => {
+    listingRequests.postRequest(newListing)
+      .then(() => {
+        listingRequests.getRequest()
+        .then((listings) => {
+          this.setState({ listings });
+        })
       })
       .catch((error) => {
-        console.error('listingRequest.getRequest failed', error);
+        console.error('error with listings post', error);
       });
+  }
+
+  componentDidMount() {
+    connection()
+    listingRequests.getRequest()
+    .then((listings) => {
+      this.setState({ listings });
+    })
+    .catch((error) => {
+      console.error('error with listings post', error);
+    });
   }
   render () {
     // const {selectedListingId} = this.state;
@@ -51,7 +64,9 @@ class App extends Component {
           <Building listing={selectedListing} />
         </div>
         <div className="col-sm-12">
-          <ListingForm />
+          <ListingForm
+          onSubmit={this.formSubmitEvent}
+          />
         </div>
       </div>
     );

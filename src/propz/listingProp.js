@@ -20,7 +20,7 @@ const listingShape = PropTypes.shape({
 
 const listingOptionalShape = PropTypes.oneOfType([
   PropTypes.shape({
-    none: PropTypes.string.isRequired,
+    nope: PropTypes.string.isRequired,
   }),
   listingShape,
 ]);
