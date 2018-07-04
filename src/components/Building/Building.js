@@ -2,12 +2,11 @@ import React from 'react';
 import {listingOptionalShape} from '../../propz/listingProp';
 
 import './Building.css';
-
+import BuildingTile from '../BuildingTile/BuildingTile';
 import {formatPrice} from '../../helpers';
 class Building extends React.Component {
   static propTypes = {
-    listing: listingOptionalShape,
-  }
+    listing: listingOptionalShape };
 
   render () {
     const { listing } = this.props;
@@ -19,7 +18,7 @@ class Building extends React.Component {
       );
     }
     return (
-      <div className="Building">
+      <div classNames="Building">
         <div className="row">
           <div className="col-xs-6">
             <img className="building-image" src={listing.imageUrl} alt="selected building"/>
@@ -32,6 +31,28 @@ class Building extends React.Component {
             <h5>{listing.squareFootage} ft<sup>2</sup></h5>
             <p>{listing.description}</p>
           </div>
+        </div>
+        <div className="row">
+         <BuildingTile
+          imageSrc = 'cal.png'
+          altText = 'calendar'
+          pTagText = {`Built: ${listing.yearBuilt}`}
+          />
+          <BuildingTile
+          imageSrc = 'hill.png'
+          altText = 'hill'
+          pTagText = {`${listing.lotInAcres} acres`}
+          />
+          <BuildingTile
+          imageSrc = 'flame.png'
+          altText = 'flame'
+          pTagText = {listing.heating}
+          />
+          <BuildingTile
+          imageSrc = 'snow.png'
+          altText = 'snow'
+          pTagText = {listing.cooling}
+          />
         </div>
       </div>
     );

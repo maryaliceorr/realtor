@@ -36,4 +36,5 @@ class Listings extends React.Component {
   }
 }
 
+
 export default Listings;
